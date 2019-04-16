@@ -1,3 +1,34 @@
+#TL;DR
+To run ELK stack use following steps:
+1. clone/download repo
+2. [Check host setup](#host-setup)
+3. Start the stack using `docker-compose`:
+   
+   ```console
+   $ docker-compose up
+   ```
+4. Now you have running ELK stack. Here are the ports:
+    * 5000: Logstash TCP transport
+    * 5043: Logstash HTTP transport
+    * 9200: Elasticsearch HTTP
+    * 9300: Elasticsearch TCP transport
+    * 5601: Kibana http port
+5. Open http://localhost:5601 and you see Kibana UI (offers you to configure indexes), use logstash-* as Index function.
+Maybe you have to ship your testing log first (Send some JSON to http://localhost:5043). 
+Then select @Timestamp as time dimension for index creation.
+
+6. In Kibana UI - Dev Tools you can try ElasticSearch requests.
+7. For calling ElasticSearch API, send GET request to http://localhost:9200/_search, Content-type application/json :
+   ```console
+     {
+       "query": {
+         "match_all": {}
+       }
+     }
+   ```
+
+For more information read the rest of original ELK on Docker documentation.
+
 # Elastic stack (ELK) on Docker
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
