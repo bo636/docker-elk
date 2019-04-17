@@ -1,4 +1,4 @@
-#TL;DR
+# TL;DR
 To run ELK stack use following steps:
 1. clone/download repo
 2. [Check host setup](#host-setup)
